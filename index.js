@@ -1,30 +1,39 @@
 const express = require('express');
+const clienteService = require('./services/clientesService');
+
 const app = express();
 
-app.use(express.static('public'));
+app.set('view engine', 'hbs');
 
-/* app.get('/clientes', (req, res) => {
-    res.send('clientes.html');
+app.get('/clientes', (req, res) => {
+    res.render('clientes', {
+        titulo: 'Clientes',
+        arregloClientes: clienteService.leerTodo('customers')
+    });
 });
 
 app.get('/empleados', (req, res) => {
-    res.send('empleados');
-}); */
-
-app.get('*', (req, res) => {
-    res.sendFile(__dirname + '/error.html');
+    res.render('empleados', {
+        titulo: 'Empleados'
+    });
 });
 
 app.get('/detalleDeOrden', (req, res) => {
-    res.send('detalleDeOrden');
+    res.render('detalleDeOrden', {
+        titulo: 'Detalle de orden'
+    });
 });
 
 app.get('/ordenes', (req, res) => {
-    res.send('ordenes');
+    res.render('ordenes', {
+        titulo: 'Órdenes'
+    });
 });
 
 app.get('/productos', (req, res) => {
-    res.send('productos');
+    res.render('productos', {
+        titulo: 'Productos'
+    });
 });
 
 app.listen(8080);
