@@ -23,11 +23,11 @@ class Cliente {
     }
 
     get nombreDeContacto() {
-        return this._nombreDeCompania;
+        return this._nombreDeContacto;
     }
 
     set nombreDeContacto(nombreDeContacto) {
-        this._nombreDeCompania = nombreDeContacto;
+        this._nombreDeContacto = nombreDeContacto;
     }
 
 }
