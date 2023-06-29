@@ -15,6 +15,19 @@ app.get('/clientes', (req, res) => {
     });
 });
 
+app.get('/formularioInsertarClientes', (req, res) => {
+    res.render('formularioCliente');
+});
+
+app.get('/insertarCliente', (req, res) => {
+    console.log(req.query.txtIdentificador, req.query.txtNombreDeCompania, req.query.txtNombreDeContacto);
+    // Falta la lógica de programación
+    res.render('clientes', {
+        titulo: 'Clientes',
+        arregloClientes: clienteService.leerTodo('customers')
+    });
+});
+
 app.get('/empleados', (req, res) => {
     res.render('empleados', {
         titulo: 'Empleados',
