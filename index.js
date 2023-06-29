@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const clienteService = require('./services/clientesService');
 const empleadoService = require('./services/empleadoService');
+const Cliente = require('./models/clientes');
 
 const app = express();
 
@@ -20,8 +21,11 @@ app.get('/formularioInsertarClientes', (req, res) => {
 });
 
 app.get('/insertarCliente', (req, res) => {
-    console.log(req.query.txtIdentificador, req.query.txtNombreDeCompania, req.query.txtNombreDeContacto);
-    // Falta la lógica de programación
+    const identificador = req.query.txtIdentificador;
+    const nombreCompania = req.query.txtNombreDeCompania;
+    const nombreContacto = req.query.txtNombreDeContacto;
+    const cliente = new Cliente(identificador, nombreCompania, nombreContacto);
+    clienteService.insertar(cliente);
     res.render('clientes', {
         titulo: 'Clientes',
         arregloClientes: clienteService.leerTodo('customers')
