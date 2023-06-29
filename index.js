@@ -1,5 +1,6 @@
 const express = require('express');
 const clienteService = require('./services/clientesService');
+const empleadoService = require('./services/empleadoService');
 
 const app = express();
 
@@ -14,7 +15,8 @@ app.get('/clientes', (req, res) => {
 
 app.get('/empleados', (req, res) => {
     res.render('empleados', {
-        titulo: 'Empleados'
+        titulo: 'Empleados',
+        arregloEmpleados: empleadoService.leerTodo('employees')
     });
 });
 
