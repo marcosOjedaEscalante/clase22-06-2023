@@ -1,10 +1,12 @@
 const express = require('express');
+const hbs = require('hbs');
 const clienteService = require('./services/clientesService');
 const empleadoService = require('./services/empleadoService');
 
 const app = express();
 
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials');
 
 app.get('/clientes', (req, res) => {
     res.render('clientes', {
