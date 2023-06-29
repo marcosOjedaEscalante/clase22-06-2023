@@ -16,9 +16,9 @@ app.get('/clientes', (req, res) => {
     });
 });
 
-app.get('/formularioInsertarClientes', (req, res) => {
+/* app.get('/formularioInsertarClientes', (req, res) => {
     res.render('formularioCliente');
-});
+}); */
 
 app.get('/insertarCliente', (req, res) => {
     const identificador = req.query.txtIdentificador;
