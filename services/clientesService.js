@@ -64,8 +64,6 @@ const eliminar = (id) => {
     fs.writeFileSync('./datos/customers.csv', cadena);
 }
 
-eliminar('AAAAA');
-
 module.exports = {
     leerTodo,
     insertar
