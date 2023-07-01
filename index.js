@@ -5,6 +5,7 @@ const empleadoService = require('./services/empleadoService');
 const Cliente = require('./models/clientes');
 
 const app = express();
+app.use(express.static('public'));
 
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
@@ -26,6 +27,15 @@ app.get('/insertarCliente', (req, res) => {
     const nombreContacto = req.query.txtNombreDeContacto;
     const cliente = new Cliente(identificador, nombreCompania, nombreContacto);
     clienteService.insertar(cliente);
+    res.render('clientes', {
+        titulo: 'Clientes',
+        arregloClientes: clienteService.leerTodo('customers')
+    });
+});
+
+app.get('/eliminarCliente/:id', (req, res) => {
+    const id = req.params.id;
+    clienteService.eliminar(id);
     res.render('clientes', {
         titulo: 'Clientes',
         arregloClientes: clienteService.leerTodo('customers')

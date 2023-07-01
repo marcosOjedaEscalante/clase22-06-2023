@@ -66,5 +66,6 @@ const eliminar = (id) => {
 
 module.exports = {
     leerTodo,
-    insertar
+    insertar,
+    eliminar
 }
